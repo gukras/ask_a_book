@@ -6,9 +6,18 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version.
+Install ruby version 7.1.1    
+```
+gem update
+gem install rails -v 7.1.1
+```
 
 * System dependencies
+```
+bundle install
+rails webpacker:install
+```
 
 * Configuration
 

@@ -92,3 +92,10 @@ build-iPhoneSimulator/
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 >>>>>>> 97e79bd (initial commit)
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
