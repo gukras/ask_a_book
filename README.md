@@ -7,13 +7,16 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version.
-Install ruby version 7.1.1    
+Run this commands to install Ruby 7.1.1. 
+Please, ignore them if you already have this rails version.
 ```
 gem update
 gem install rails -v 7.1.1
 ```
 
 * System dependencies
+Run this commands to install dependencies
+
 ```
 bundle install
 rails webpacker:install
@@ -22,6 +25,10 @@ rails webpacker:install
 * Configuration
 
 * Database creation
+Run this command to create the development and test databases
+```
+rails db:create
+```
 
 * Database initialization
 
@@ -30,5 +37,8 @@ rails webpacker:install
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+
+* Other Definitios
+Open Graph, Twitter and Google Tag Manager were not included in the project, as i expected to be a private project. 
 
 
