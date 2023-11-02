@@ -15,11 +15,18 @@ gem install rails -v 7.1.1
 ```
 
 * System dependencies
-Run this commands to install dependencies
 
+Install Babel Plugin
+```
+npm install --save-dev @babel/plugin-proposal-private-methods
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
+```
+
+Run these commands to install dependencies
 ```
 bundle install
 rails webpacker:install
+rails webpacker:install:react
 ```
 
 * Configuration
