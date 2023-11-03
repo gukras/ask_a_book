@@ -30,6 +30,9 @@ rails webpacker:install:react
 ```
 
 * Configuration
+Please, you should have your own environment variables file (.env) or create variables in Heroku or your deployment platform.
+You can use .env.example as an example. 
+
 
 * Database creation
 Run this command to create the development and test databases
@@ -38,6 +41,9 @@ rails db:create
 ```
 
 * Database initialization
+```
+rails db:migrate
+```
 
 * How to run the test suite
 
@@ -46,6 +52,7 @@ rails db:create
 * Deployment instructions
 
 * Other Definitios
-Open Graph, Twitter and Google Tag Manager were not included in the project, as i expected to be a private project. 
+- Open Graph, Twitter and Google Tag Manager were not included in the project, as i expected to be a private project. 
+- A different embedding model was used to avoid deprecation in some week, so the results may differ from original solution. 
 
 

@@ -50,12 +50,16 @@ gem 'webpacker', '~> 5.0'
 gem 'react-rails'
 gem 'rack-cors'
 
+#to convert pdf/csv to embeddings
+gem 'dotenv-rails'
+gem 'roo' # for CSV operations
+gem 'pdf-reader' 
+gem 'ruby-openai'
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
-
-  #Non default gems  
-  gem 'dotenv-rails'
 end
 
 group :development do
