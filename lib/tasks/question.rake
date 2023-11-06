@@ -1,27 +1,25 @@
 namespace :question do
   require 'csv'
   require 'pdf-reader'
-  #require 'net/http'
-  #require 'json'
   require 'dotenv/load'
-  require "ruby/openai"
+  require 'tokenizers'
 
   COMPLETIONS_MODEL = "text-davinci-003"
-  DOC_EMBEDDINGS_MODEL = "text-embedding-ada-002" 
+  MODEL_NAME = "curie"
+  DOC_EMBEDDINGS_MODEL = "text-search-#{MODEL_NAME}-doc-001"
+  @tokenizer = Tokenizers.from_pretrained("gpt2")
 
   desc 'Convert PDF to Embeddings'
-  task :convert_pdf_to_embeddings, [:pdf] => :environment do |t, args|
+  task :convert_pdf_to_embeddings, [:pdf_filename] => :environment do |t, args|
 
-    tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
-    reader = PDF::Reader.new(args[:pdf])
+    reader = PDF::Reader.new(args[:pdf_filename])
     res = []
 
     reader.pages.each_with_index do |page, index|
       res += extract_pages(page.text, index + 1)
     end
 
-    # Filter and save as CSV
-    csv_filename = 'book.pdf.pages.csv'
+    csv_filename = 'book2.pdf.pages.csv'
     CSV.open(csv_filename, 'wb') do |csv|
       csv << ["title", "content", "tokens"]
       res.each do |row|
@@ -29,22 +27,24 @@ namespace :question do
       end
     end
 
-    doc_embeddings = compute_doc_embeddings(csv)
-    save_doc_embeddings(doc_embeddings)
+    convert_csv_to_embeddings(Rails.root.join(csv_filename))
     
   end 
 
   desc 'Convert CSV to Embeddings'
-  task :convert_csv_to_embeddings, [:csv] => :environment do |t, args|
+  task :convert_csv_to_embeddings, [:csv_filename] => :environment do |t, args|
     require 'dotenv/load'
-    csv = CSV.read(Rails.root.join(args[:csv]), headers: true)
-    doc_embeddings = compute_doc_embeddings(csv)
-    save_doc_embeddings(doc_embeddings)
-    
+    convert_csv_to_embeddings(Rails.root.join(args[:csv_filename]))
   end 
 
+  def convert_csv_to_embeddings(csv_filename)
+    csv = CSV.read(csv_filename, headers: true)
+    doc_embeddings = compute_doc_embeddings(csv)
+    save_doc_embeddings(doc_embeddings)
+  end
+
   def save_doc_embeddings(doc_embeddings)
-    CSV.open(Rails.root.join('book.pdf.embeddings.csv'), 'wb') do |csv|
+    CSV.open(Rails.root.join('book2.pdf.embeddings.csv'), 'wb') do |csv|
       csv << ['title'] + (0..4095).to_a
       
       doc_embeddings.each_with_index do |(index, embedding), i|
@@ -53,38 +53,22 @@ namespace :question do
     end
   end
 
-  # Placeholder tokenizer function (this will not behave exactly like GPT2TokenizerFast from transformers)
   def count_tokens(text)
-    text.split.size
+    @tokenizer.encode(text).ids.length
   end
 
   def extract_pages(page_text, index)
     return [] if page_text.empty?
-
+    
     content = page_text.split.join(" ")
     [["Page #{index}", content, count_tokens(content) + 4]]
   end
 
-  def get_embedding(text, model)
-    openai = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
-    result = openai.embeddings( parameters: {
-        model: model,
-        input: text
-      }
-    )
-    result["data"][0]["embedding"]
-  end
-
-  def get_doc_embedding(text)
-    get_embedding(text, DOC_EMBEDDINGS_MODEL)
-  end
-
   def compute_doc_embeddings(df)
-    # Create an embedding for each row in the dataframe using the OpenAI Embeddings API.
-    # Return a hash that maps between each embedding vector and the index of the row that it corresponds to.   
     embeddings = {}
+    openai_client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
     df.each_with_index do |row, idx|
-      embeddings[idx] = get_doc_embedding(row["content"])
+      embeddings[idx] = EmbeddingService.get_doc_embedding(row["content"], openai_client)
     end
     embeddings
   end

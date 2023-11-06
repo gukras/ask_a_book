@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'; 
-const Home = () => {
-
+const Home = (props) => {
+    
+    const initialQuestion = props['initialQuestion'];
+    const initialAnswer = props['initialAnswer'];
     const formRef = useRef(null);
-    const [question, setQuestion] = useState('What is a minimalist entrepreneur?');
-    const [answer, setAnswer] = useState("");  
+    const [question, setQuestion] = useState(initialQuestion || 'What is The Minimalist Entrepreneur about?');
+    const [answer, setAnswer] = useState(initialAnswer || "");  
     const [isLoading, setIsLoading] = useState(false);
-    const [displayedAnswer, setDisplayedAnswer] = useState("");  
-
+    const [displayedAnswer, setDisplayedAnswer] = useState(initialAnswer || "");  
     useEffect(() => {
         if (answer !== "") {
             setIsLoading(true);
@@ -22,13 +23,36 @@ const Home = () => {
 
             return () => clearInterval(typingInterval);
         }
-    }, [answer, displayedAnswer]);
-
+    }, [answer, displayedAnswer]);     
 
     const handleSubmit = async (e) => {
         if (e && e.preventDefault) {
             e.preventDefault();
         }
+        askQuestion(question);
+        
+    };
+
+    const handleTextChange = (e) => {
+        setQuestion(e.target.value);
+    };
+
+    const handleLuckyClick = (e) => {
+        e.preventDefault();
+        const options = ["What is a minimalist entrepreneur?", "What is your definition of community?", "How do I decide what kind of business I should start?"];
+
+        const randomChoice = options[Math.floor(Math.random() * options.length)];
+        setQuestion(randomChoice);
+
+        askQuestion(randomChoice);
+    };
+
+    const handleAskAnotherClick = (e) => {
+        setDisplayedAnswer("");       
+        setAnswer("");        
+    }
+
+    const askQuestion = async (question) => {
 
         if (!question.trim()) {  
             alert("Please ask a question!");
@@ -53,25 +77,6 @@ const Home = () => {
         setIsLoading(false); 
         
     };
-
-    const handleTextChange = (e) => {
-        setQuestion(e.target.value);
-    };
-
-    const handleLuckyClick = (e) => {
-        e.preventDefault();
-        const options = ["What is a minimalist entrepreneur?", "What is your definition of community?", "How do I decide what kind of business I should start?"];
-
-        const randomChoice = options[Math.floor(Math.random() * options.length)];
-        setQuestion(randomChoice);
-
-        handleSubmit();
-    };
-
-    const handleAskAnotherClick = (e) => {
-        setDisplayedAnswer("");       
-        setAnswer("");        
-    }
 
     return (  
         <div>

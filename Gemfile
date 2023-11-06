@@ -49,12 +49,13 @@ gem "bootsnap", require: false
 gem 'webpacker', '~> 5.0'
 gem 'react-rails'
 gem 'rack-cors'
-
-#to convert pdf/csv to embeddings
 gem 'dotenv-rails'
 gem 'roo' # for CSV operations
 gem 'pdf-reader' 
 gem 'ruby-openai'
+gem 'tokenizers'
+gem 'devise'
+gem 'rails_admin'
 
 
 group :development, :test do

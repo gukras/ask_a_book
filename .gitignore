@@ -11,8 +11,11 @@
 /log/
 /tmp/
 
-# Used by dotenv library to load environment variables.
-.env
+# Ignore all .env files
+.env.*
+
+# But not .env.example
+!.env.example
 
 # Ignore Byebug command history file.
 .byebug_history
