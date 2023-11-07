@@ -17,8 +17,5 @@
   },
   "resolutions": {
     "rails_admin/@fortawesome/fontawesome-free": "^5.15.0"
-  },
-  "engines": {
-    "node": "16.X"
   }
 }
