@@ -106,4 +106,5 @@ heroku domains:add <yourdomain>
 7. The `cors.rb` file is configured to allow origins set to *. This setting can be further restricted if necessary.
 8. React components can also be integrated using `<%= react_component %>` within Rails views. Given the project's scope, both methods yield similar results; however, a different approach might be preferable for larger projects.
 9. While some folders/files may be superfluous for this specific project, they have been retained to adhere to Rails conventions.
+10. There are some warnings with new versions for example with npm that should be reviewed. 
 
