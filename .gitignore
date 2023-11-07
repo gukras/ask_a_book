@@ -12,7 +12,7 @@
 /tmp/
 
 # Ignore all .env files
-.env.*
+.env*
 
 # But not .env.example
 !.env.example
