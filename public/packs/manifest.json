@@ -1,29 +1,37 @@
 {
-  "application.js": "/packs/js/application-d4006b5d157dbc4e2bc0.js",
-  "application.js.map": "/packs/js/application-d4006b5d157dbc4e2bc0.js.map",
+  "application.js": "/packs/js/application-3604f517140a59655c59.js",
+  "application.js.map": "/packs/js/application-3604f517140a59655c59.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-d4006b5d157dbc4e2bc0.js"
+        "/packs/js/application-3604f517140a59655c59.js"
       ],
       "js.map": [
-        "/packs/js/application-d4006b5d157dbc4e2bc0.js.map"
+        "/packs/js/application-3604f517140a59655c59.js.map"
+      ]
+    },
+    "hello_react": {
+      "js": [
+        "/packs/js/hello_react-ba9d028557f0214eb9af.js"
+      ],
+      "js.map": [
+        "/packs/js/hello_react-ba9d028557f0214eb9af.js.map"
       ]
     },
     "rails_admin": {
       "js": [
-        "/packs/js/rails_admin-63fc5722943c9c6b39d9.js"
+        "/packs/js/rails_admin-62a19f4dbca17b8a3bf0.js"
       ],
       "js.map": [
-        "/packs/js/rails_admin-63fc5722943c9c6b39d9.js.map"
+        "/packs/js/rails_admin-62a19f4dbca17b8a3bf0.js.map"
       ]
     }
   },
+  "hello_react.js": "/packs/js/hello_react-ba9d028557f0214eb9af.js",
+  "hello_react.js.map": "/packs/js/hello_react-ba9d028557f0214eb9af.js.map",
   "media/images/bookCover.png": "/packs/media/images/bookCover-a3f691d1.png",
-  "media/webfonts/fa-solid-900.ttf": "/packs/media/webfonts/fa-solid-900-d75e3fd1.ttf",
-  "media/webfonts/fa-solid-900.woff2": "/packs/media/webfonts/fa-solid-900-b6879d41.woff2",
-  "rails_admin.js": "/packs/js/rails_admin-63fc5722943c9c6b39d9.js",
-  "rails_admin.js.map": "/packs/js/rails_admin-63fc5722943c9c6b39d9.js.map",
+  "rails_admin.js": "/packs/js/rails_admin-62a19f4dbca17b8a3bf0.js",
+  "rails_admin.js.map": "/packs/js/rails_admin-62a19f4dbca17b8a3bf0.js.map",
   "vendors~actioncable.js": "/packs/js/vendors~actioncable-111339b91a6898730a91.chunk.js",
   "vendors~actioncable.js.map": "/packs/js/vendors~actioncable-111339b91a6898730a91.chunk.js.map"
 }

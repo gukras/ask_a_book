@@ -61,8 +61,15 @@ build-iPhoneSimulator/
 
 /public/packs
 # But not .env.example
-!/public/packs/manifest.json    
+#!/public/packs/manifest.json    
 
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+/public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log
