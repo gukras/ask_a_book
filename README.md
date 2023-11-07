@@ -2,8 +2,8 @@
 # ask_a_book - Gumroad challenge
 
 ## Ruby version.
-1. Run this commands to install Ruby 7.1.1. 
-Please, ignore them if you already have this rails version.
+1. Run this commands to install Rails 7.1.1. 
+Please ignore them if you already have this version of Rails installed.
 ```
 gem update
 gem install rails -v 7.1.1
@@ -11,13 +11,13 @@ gem install rails -v 7.1.1
 
 ## System dependencies
 
-1. Install Babel Plugin
+1. Install the Babel Plugin with these commands:
 ```
 npm install --save-dev @babel/plugin-proposal-private-methods
 npm install --save-dev @babel/plugin-proposal-private-property-in-object
 ```
 
-2. Run these commands to install dependencies
+2. Execute the following commands to install additional dependencies:
 ```
 bundle install
 rails webpacker:install
@@ -25,51 +25,47 @@ rails webpacker:install:react
 ```
 
 ## Configuration
-1. Please, you should have your own environment variables file `.env` or create variables in Heroku or your deployment platform.
-You can use `.env.example` as an example. 
+1. Ensure you have your own `.env` file for environment variables, or set them up on Heroku or your chosen deployment platform.
+Refer to `.env.example` for guidance.
 
 
 ## Database creation
-1. Run this command to create the development and test databases. Command may change if you are working with a production environment.
+1. Use this command to create the development and test databases. The command may differ when working in a production environment.
 ```
 rails db:create
 ```
 
 ## Database initialization
-1. Run this command to migrate your database. Command may change if you are working with a production environment.
-
+1. Migrate your database with the following command (adjust as needed for production environments):
 ```
 rails db:migrate
 ```
 
 ## User Setup
-1. Create a user and password to access the authenticated controllers. Password must has at least 6 character (Modify devise configuration if you want a more secure platform.)
-
+1. Generate a user and password to access authenticated controllers. The password must be at least 6 characters long (modify the Devise configuration for enhanced security if desired).
 ```
 rake 'setup:create_user[<email>, <password>]'
 ```
 
 ## Create embeddings
 
-1. Create embeddings file from a pdf
-
+1. Generate an embeddings file from a PDF:
 ```
 rake 'question:convert_pdf_to_embeddings[<file_name>]'
 ```
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
 * Deployment instructions
 
 * Other Definitios
-1. Open Graph, Twitter and Google Tag Manager were not included in the project, as i expected to be a private project. 
-2. Embedding model must be changed to a newer version like text-embedding-ada-002 before January 4, 2024 to avoid disruption of service
-3. Tokenizer function in ruby is not exactly the same than python version, but should be equivalent. 
-4. I decided to create two runnable task, question:convert_pdf_to_embeddings and question:convert_csv_to_embeddings. The reason of this definition was that i couldn't find the original book.pdf, so in order anyone face the same issue and has the csv version book.pdf.pages.csv, can run the embeddings task. 
-5. Some refactors were made in order to avoid code repeatition with open AI get_embedding methods, and to ensure that only 1 instance of open AI client was used during a request.
-6. Rails Admin and devise weres used for the authenticated section /db.
-7. cors.rb origins are set to *. This can be restricted more if needed. 
-8. React interaction can also be solved with <% =react_component %> from rails views. Due to the reduce scope of the project, both options have a similar impact. For a bigger project, the approach may be different. 
+1. Open Graph, Twitter, and Google Tag Manager were omitted from the project as it was anticipated to be private.
+2. The Embedding model should be updated to a newer version, such as `text-embedding-ada-002`, before January 4, 2024, to prevent service interruptions.
+3. The tokenizer function in Ruby may not be identical to the Python version but aims to be functionally equivalent.
+4. Two runnable tasks were created: `question:convert_pdf_to_embeddings` and `question:convert_csv_to_embeddings`. This decision was due to the unavailability of the original `book.pdf`; thus, if someone encounters the same issue and possesses the `book.pdf.pages.csv` file, they can execute the embeddings task.
+5. Refactoring was undertaken to reduce code repetition, particularly with OpenAI's get_embedding methods, ensuring a single instance of the OpenAI client per request.
+6. Rails Admin and Devise were utilized for the authenticated section `/db`.
+7. The `cors.rb` file is configured to allow origins set to *. This setting can be further restricted if necessary.
+8. React components can also be integrated using `<%= react_component %>` within Rails views. Given the project's scope, both methods yield similar results; however, a different approach might be preferable for larger projects.
+9. While some folders/files may be superfluous for this specific project, they have been retained to adhere to Rails conventions.
 
