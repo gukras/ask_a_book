@@ -19,7 +19,7 @@ namespace :question do
       res += extract_pages(page.text, index + 1)
     end
 
-    csv_filename = 'book2.pdf.pages.csv'
+    csv_filename = 'book.pdf.pages.csv'
     CSV.open(csv_filename, 'wb') do |csv|
       csv << ["title", "content", "tokens"]
       res.each do |row|
@@ -44,7 +44,7 @@ namespace :question do
   end
 
   def save_doc_embeddings(doc_embeddings)
-    CSV.open(Rails.root.join('book2.pdf.embeddings.csv'), 'wb') do |csv|
+    CSV.open(Rails.root.join('book.pdf.embeddings.csv'), 'wb') do |csv|
       csv << ['title'] + (0..4095).to_a
       
       doc_embeddings.each_with_index do |(index, embedding), i|
