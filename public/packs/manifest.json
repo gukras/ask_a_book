@@ -1,0 +1,29 @@
+{
+  "application.js": "/packs/js/application-d4006b5d157dbc4e2bc0.js",
+  "application.js.map": "/packs/js/application-d4006b5d157dbc4e2bc0.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-d4006b5d157dbc4e2bc0.js"
+      ],
+      "js.map": [
+        "/packs/js/application-d4006b5d157dbc4e2bc0.js.map"
+      ]
+    },
+    "rails_admin": {
+      "js": [
+        "/packs/js/rails_admin-63fc5722943c9c6b39d9.js"
+      ],
+      "js.map": [
+        "/packs/js/rails_admin-63fc5722943c9c6b39d9.js.map"
+      ]
+    }
+  },
+  "media/images/bookCover.png": "/packs/media/images/bookCover-a3f691d1.png",
+  "media/webfonts/fa-solid-900.ttf": "/packs/media/webfonts/fa-solid-900-d75e3fd1.ttf",
+  "media/webfonts/fa-solid-900.woff2": "/packs/media/webfonts/fa-solid-900-b6879d41.woff2",
+  "rails_admin.js": "/packs/js/rails_admin-63fc5722943c9c6b39d9.js",
+  "rails_admin.js.map": "/packs/js/rails_admin-63fc5722943c9c6b39d9.js.map",
+  "vendors~actioncable.js": "/packs/js/vendors~actioncable-111339b91a6898730a91.chunk.js",
+  "vendors~actioncable.js.map": "/packs/js/vendors~actioncable-111339b91a6898730a91.chunk.js.map"
+}
