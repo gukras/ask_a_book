@@ -64,8 +64,8 @@ heroku addons:create heroku-postgresql:mini --app <your-app-name>
 
 2. Add Heroku buildpacks before pushing
 ```
+heroku buildpacks:set heroku/nodejs --index 1
 heroku buildpacks:add heroku/ruby
-heroku buildpacks:add heroku/nodejs
 ```
 
 3. Set config variables on Heroku to match your `.env`.
