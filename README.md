@@ -96,6 +96,17 @@ heroku ps:scale web=1
 heroku domains:add <yourdomain>
 ```
 
+6. Open App
+```
+heroku open
+```
+
+6. Common issues
+If you have any issues with Node version on Heroku, try changing Node Version
+```
+heroku config:set NODE_VERSION=16.x -a askabook
+```
+
 ## Other Definitios
 1. Open Graph, Twitter, and Google Tag Manager were omitted from the project as it was anticipated to be private.
 2. The Embedding model should be updated to a newer version, such as `text-embedding-ada-002`, before January 4, 2024, to prevent service interruptions.
