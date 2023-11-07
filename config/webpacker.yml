@@ -78,6 +78,6 @@ production:
 
   compile: false
 
-  extract_css: false
+  extract_css: true
 
   cache_manifest: true

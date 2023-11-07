@@ -17,6 +17,5 @@
   },
   "resolutions": {
     "rails_admin/@fortawesome/fontawesome-free": "^5.15.0"
-  },
-  "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start"
+  }
 }
