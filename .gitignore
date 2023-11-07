@@ -60,6 +60,7 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 /public/packs
+/public/assets
 # But not .env.example
 #!/public/packs/manifest.json    
 
