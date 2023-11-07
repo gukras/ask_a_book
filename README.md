@@ -58,7 +58,8 @@ rails s
 1. Create a Heroku app (If the name is already used, just choose a different one.): 
 
 ```
-heroku create askabook
+heroku create <your-app-name>
+heroku addons:create heroku-postgresql:mini --app <your-app-name>
 ```
 
 2. Add Heroku buildpacks before pushing
@@ -74,10 +75,6 @@ Database variables are automatically set on Heroku, DO NOT modify them
 
 ```
 git push heroku main
-heroku ps:scale web=1
-heroku run python manage.py migrate
-heroku open
-heroku domains:add askmybook.com
 ```
 
 Deploy to Heroku with:
@@ -86,6 +83,18 @@ git push heroku main --no-verify
 ```
 `no-verify` is added due to using Git LFS for the large embedding file.
 
+4. Run migrations:
+```
+heroku rake db:migrate
+heroku rake 'setup:create_user[<email>, <password>]'
+heroku rake 'question:convert_pdf_to_embeddings[<file_name>]'
+```
+
+5. Change configurations
+```
+heroku ps:scale web=1
+heroku domains:add <yourdomain>
+```
 
 ## Other Definitios
 1. Open Graph, Twitter, and Google Tag Manager were omitted from the project as it was anticipated to be private.
